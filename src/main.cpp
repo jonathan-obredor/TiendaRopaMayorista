@@ -1,6 +1,6 @@
-#include "LogicaNegocio/Vendedor.h"
 #include "LogicaNegocio/Tienda.h"
 #include "FrontEnd/TerminalUI.h"
+#include <iostream>
 
 enum class MenuOption
 {
@@ -25,8 +25,7 @@ int main()
     switch (static_cast<MenuOption>(opcion))
     {
     case MenuOption::HistorialCotizaciones:
-      // TODO: Implementar la opción "Historial de Cotizaciones"
-      std::cout << "Opción no implementada.\n";
+      ui.mostrarHistorialCotizaciones(vendedor);
       break;
     case MenuOption::RealizarCotizacion:
       // TODO: Implementar la opción "Realizar Cotización"

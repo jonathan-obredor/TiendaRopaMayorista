@@ -13,8 +13,13 @@ public:
     }
     virtual ~Cotizacion() = default;
 
-    const std::shared_ptr<Prenda> &obtenerPrenda() const;
-    int obtenerCantidad() const;
+    const std::shared_ptr<Prenda> &obtenerPrenda() const { return prenda_; }
+    int getId() const { return id_; }
+    const std::string &getFecha() const { return fecha_; }
+    const std::string &getHora() const { return hora_; }
+    //const std::string &getDescripcionPrenda() const { return prenda_->getDescripcion(); } //TODO implementar en las 3 clases
+    int getCantidad() const { return cantidad_; }
+    float getPrecioFinal() const;
 
 private:
     int id_;
