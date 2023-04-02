@@ -1,40 +1,44 @@
-#include <iostream>
-#include "Vendedor.h"
-#include "Cotizacion.h"
-#include "Prenda.h"
-#include "Pantalon.h"
-#include "Camisa.h"
-#include "Tienda.h"
+#include "LogicaNegocio/Vendedor.h"
+#include "LogicaNegocio/Tienda.h"
+#include "FrontEnd/TerminalUI.h"
 
-int main() {
-/*  
-  // Crear un objeto Tienda
+enum class MenuOption
+{
+  HistorialCotizaciones = 1,
+  RealizarCotizacion = 2,
+  Salir = 3
+};
+
+int main()
+{
+  // Crear objetos de la tienda y el vendedor
   Tienda tienda("Mi Tienda", "Calle Falsa 123");
+  Vendedor vendedor("Juan", "Pérez", 1234);
 
-  // Crear algunos objetos Prenda y agregarlos a la Tienda
-  Pantalon pantalon("chupines");
-  pantalon.setCalidad("premium");
-  pantalon.setCantidadEnStock(10);
-  tienda.agregarPrenda(pantalon);
+  // Crear objeto de la pantalla principal y mostrarla
+  TerminalUI ui;
+  int opcion = -1;
+  while (static_cast<MenuOption>(opcion) != MenuOption::Salir)
+  {
+    opcion = ui.mostrarPantallaPrincipal();
 
-  Camisa camisa("manga larga", "comun");
-  camisa.setCalidad("standard");
-  camisa.setCantidadEnStock(20);
-  tienda.agregarPrenda(camisa);
-
-  // Crear un objeto Vendedor
-  Vendedor vendedor("Juan", "Perez", 123);
-
-  // Crear una Cotizacion usando una de las prendas de la Tienda
-  Prenda* prenda = tienda.getPrendas()[0];
-  Cotizacion cotizacion(1, "2023-03-31", "14:30", vendedor.getCodigo(), *prenda, 2);
-  cotizacion.calcularResultado();
-
-  // Agregar la Cotizacion al Vendedor y mostrar todas las Cotizaciones del Vendedor
-  vendedor.agregarCotizacion(cotizacion);
-  for (Cotizacion cotizacion : vendedor.obtenerCotizaciones()) {
-    std::cout << "Cotizacion #" << cotizacion.getId() << " - " << cotizacion.getFecha() << " " << cotizacion.getHora() << std::endl;
+    switch (static_cast<MenuOption>(opcion))
+    {
+    case MenuOption::HistorialCotizaciones:
+      // TODO: Implementar la opción "Historial de Cotizaciones"
+      std::cout << "Opción no implementada.\n";
+      break;
+    case MenuOption::RealizarCotizacion:
+      // TODO: Implementar la opción "Realizar Cotización"
+      std::cout << "Opción no implementada.\n";
+      break;
+    case MenuOption::Salir:
+      std::cout << "Salir.\n";
+      break;
+    default:
+      std::cout << "Opción inválida.\n";
+      break;
+    }
   }
-*/
   return 0;
 }

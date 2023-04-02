@@ -19,6 +19,11 @@ public:
     {
         return cotizaciones_;
     }
+    const std::string getNombreCompleto() const
+    {
+        return nombre_ + " " + apellido_;
+    }
+    int getCodigo() const { return codigo_; }
 
 private:
     std::string nombre_;

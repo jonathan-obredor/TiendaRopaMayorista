@@ -5,7 +5,7 @@ project(ModeloTiendaRopa CXX)
 set(CMAKE_CXX_STANDARD 14)
 
 # Archivos fuente del proyecto
-set(SOURCES
+set(SRC_LIB
     src/LogicaNegocio/Camisa.cpp
     src/LogicaNegocio/Cotizacion.cpp
     src/LogicaNegocio/Pantalon.cpp
@@ -15,18 +15,25 @@ set(SOURCES
 )
 
 # Generar la biblioteca estática a partir de los archivos fuente
-add_library(${PROJECT_NAME} STATIC ${SOURCES} ${HEADERS})
+add_library(${PROJECT_NAME} STATIC ${SRC_LIB} ${HEADERS})
 
 # Establecer el directorio de salida para los archivos generados
 set_target_properties(${PROJECT_NAME} PROPERTIES ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
 
 # Agregar la carpeta 'include' para los archivos de encabezado
-#target_include_directories(${PROJECT_NAME} PUBLIC include)
+# target_include_directories(${PROJECT_NAME} PUBLIC include)
 
 # Crear un archivo ejecutable para la aplicación
 set(EXE_NAME MiTienda)
-add_executable(${EXE_NAME} src/main.cpp)
-target_include_directories(${EXE_NAME} PRIVATE src/LogicaNegocio)
+
+set(SRC_EXE
+    src/main.cpp
+    src/FrontEnd/TerminalUI.cpp
+)
+
+add_executable(${EXE_NAME} ${SRC_EXE})
+
+target_include_directories(${EXE_NAME} PRIVATE src/LogicaNegocio src/FrontEnd)
 
 # Enlazar la aplicación con la biblioteca estática
 target_link_libraries(${EXE_NAME} PRIVATE ${PROJECT_NAME})

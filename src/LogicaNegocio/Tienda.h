@@ -14,6 +14,16 @@ public:
     void agregarPrenda(const Prenda &prenda);
     std::vector<Prenda> &obtenerPrendas();
 
+    const std::string &getNombre() const
+    {
+        return nombre;
+    }
+
+    const std::string &getDireccion() const
+    {
+        return direccion;
+    }
+
 private:
     std::string nombre;
     std::string direccion;
