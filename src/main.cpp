@@ -28,8 +28,7 @@ int main()
       ui.mostrarHistorialCotizaciones(vendedor);
       break;
     case MenuOption::RealizarCotizacion:
-      // TODO: Implementar la opción "Realizar Cotización"
-      std::cout << "Opción no implementada.\n";
+      ui.realizarCotizacion(vendedor, tienda);
       break;
     case MenuOption::Salir:
       std::cout << "Salir.\n";

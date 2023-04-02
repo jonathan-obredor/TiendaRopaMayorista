@@ -1,5 +1,6 @@
 #include <string>
 #include "Vendedor.h"
+#include "Tienda.h"
 
 class TerminalUI
 {
@@ -8,7 +9,9 @@ public:
 
     int mostrarPantallaPrincipal();
     void mostrarHistorialCotizaciones(Vendedor &vendedor);
+    void realizarCotizacion(Vendedor &vendedor, Tienda &tienda);
 
 private:
-    void limpiarPantalla();
+    void nuevaPantalla();
+    void barra();
 };
