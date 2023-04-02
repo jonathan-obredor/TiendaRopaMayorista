@@ -13,7 +13,7 @@ enum class TipoPantalon
 class Pantalon : public Prenda
 {
 public:
-    Pantalon::Pantalon(const std::string &nombre, Calidad calidad, int cantidadEnStock, float precioBase, TipoPantalon tipo)
+    Pantalon(const std::string &nombre, Calidad calidad, int cantidadEnStock, float precioBase, TipoPantalon tipo)
         : Prenda(nombre, calidad, cantidadEnStock, precioBase), tipo(tipo)
     {
     }
@@ -23,7 +23,7 @@ public:
     TipoPantalon getTipoPantalon() const { return tipo; }
     void setTipoPantalon(TipoPantalon tipoPantalon) { tipo = tipoPantalon; }
 
-    float getPrecio() const override;
+    float getPrecio() const;
 
 private:
     TipoPantalon tipo;

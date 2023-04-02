@@ -31,7 +31,7 @@ public:
     TipoManga getManga() const;
     void setManga(TipoManga manga);
 
-    float getPrecio() const override;
+    float getPrecio() const;
 
 private:
     TipoCuello m_cuello;
