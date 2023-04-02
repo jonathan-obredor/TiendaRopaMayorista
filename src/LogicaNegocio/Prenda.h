@@ -24,8 +24,11 @@ public:
     int getUnidadesEnStock() const;
     void setUnidadesEnStock(int unidadesEnStock);
 
-    virtual float getPrecio() const;
-    void setPrecio(float precio); // TODO implementar aca o en camisa y pantalon??
+    const float getPrecio() const
+    {
+        return precio;
+    }
+    // void setPrecio(float precio);
 
 protected:
     Calidad calidad;

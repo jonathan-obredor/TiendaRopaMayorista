@@ -22,6 +22,7 @@ public:
         : Prenda(nombre, calidad, cantidadEnStock, precio)
     {
     }
+
     virtual ~Camisa() = default;
 
     TipoCuello getCuello() const;

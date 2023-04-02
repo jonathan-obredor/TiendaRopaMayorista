@@ -13,8 +13,11 @@ enum class TipoPantalon
 class Pantalon : public Prenda
 {
 public:
-    Pantalon() = default;
-    Pantalon(const std::string &nombre, Calidad calidad, int cantidadEnStock, TipoPantalon tipo);
+    Pantalon::Pantalon(const std::string &nombre, Calidad calidad, int cantidadEnStock, float precioBase, TipoPantalon tipo)
+        : Prenda(nombre, calidad, cantidadEnStock, precioBase), tipo(tipo)
+    {
+    }
+
     virtual ~Pantalon() = default;
 
     TipoPantalon getTipoPantalon() const { return tipo; }

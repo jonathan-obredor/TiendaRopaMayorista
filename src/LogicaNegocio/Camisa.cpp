@@ -1,8 +1,5 @@
 #include "Camisa.h"
 
-
- 
-
 TipoCuello Camisa::getCuello() const
 {
     return m_cuello;
@@ -36,7 +33,8 @@ float Camisa::getPrecio() const
     {
         precioBase *= 1.03f;
     }
-    if (calidad == Calidad::Premium) {
+    if (calidad == Calidad::Premium)
+    {
         precioBase *= 1.3; // se aumenta 30%
     }
 

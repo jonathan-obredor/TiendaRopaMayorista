@@ -1,10 +1,5 @@
 #include "Pantalon.h"
 
-Pantalon::Pantalon(const std::string &nombre, Calidad calidad, int cantidadEnStock, TipoPantalon tipo) : Prenda(nombre, calidad, cantidadEnStock),
-                                                                                                         tipo(tipo)
-{
-}
-
 float Pantalon::getPrecio() const
 {
     float precioBase = Prenda::getPrecio();
