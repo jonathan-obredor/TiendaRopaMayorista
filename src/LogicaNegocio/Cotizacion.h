@@ -11,6 +11,8 @@ public:
         : id_(id), fecha_(fecha), hora_(hora), codigoVendedor_(codigoVendedor), prenda_(prenda), cantidad_(cantidad), resultado_(resultado)
     {
     }
+    virtual ~Cotizacion() = default;
+
     const std::shared_ptr<Prenda> &obtenerPrenda() const;
     int obtenerCantidad() const;
 
