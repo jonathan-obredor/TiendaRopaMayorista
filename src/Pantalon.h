@@ -6,22 +6,24 @@
 
 enum class TipoPantalon
 {
-    comunes,
-    chupines
+    Comun,
+    Chupin
 };
 
 class Pantalon : public Prenda
 {
 public:
     Pantalon() = default;
-    Pantalon(const std::string& nombre, Calidad calidad, int cantidadEnStock, TipoPantalon tipo);
+    Pantalon(const std::string &nombre, Calidad calidad, int cantidadEnStock, TipoPantalon tipo);
     virtual ~Pantalon() = default;
 
-    TipoPantalon getTipoPantalon() const { return tipoPantalon_; }
-    void setTipoPantalon(TipoPantalon tipoPantalon) { tipoPantalon_ = tipoPantalon; }
+    TipoPantalon getTipoPantalon() const { return tipo; }
+    void setTipoPantalon(TipoPantalon tipoPantalon) { tipo = tipoPantalon; }
+
+    float getPrecio() const override;
 
 private:
-    TipoPantalon tipoPantalon_;
+    TipoPantalon tipo;
 };
 
 #endif /* PANTALON_H */

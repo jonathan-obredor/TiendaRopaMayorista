@@ -18,15 +18,19 @@ enum class TipoManga
 class Camisa : public Prenda
 {
 public:
-    // Camisa(const std::string& nombre, const std::string& calidad, int stock, TipoCuello cuello, TipoManga manga);
-
-    Camisa(const std::string &nombre, Calidad calidad, int stock, TipoCuello cuello, TipoManga manga);
+    Camisa(const std::string &nombre, Calidad calidad = Calidad::Standard, int cantidadEnStock = 0, float precio = 0.0f)
+        : Prenda(nombre, calidad, cantidadEnStock, precio)
+    {
+    }
+    virtual ~Camisa() = default;
 
     TipoCuello getCuello() const;
     void setCuello(TipoCuello cuello);
 
     TipoManga getManga() const;
     void setManga(TipoManga manga);
+
+    float getPrecio() const override;
 
 private:
     TipoCuello m_cuello;

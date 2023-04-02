@@ -1,8 +1,7 @@
 #include "Camisa.h"
 
-Camisa::Camisa(const std::string& nombre, Calidad calidad, int stock, TipoCuello cuello, TipoManga manga)
-    : Prenda(nombre, calidad, stock), m_cuello(cuello), m_manga(manga)
-{}
+
+ 
 
 TipoCuello Camisa::getCuello() const
 {
@@ -22,4 +21,24 @@ TipoManga Camisa::getManga() const
 void Camisa::setManga(TipoManga manga)
 {
     m_manga = manga;
+}
+
+float Camisa::getPrecio() const
+{
+    float precioBase = Prenda::getPrecio();
+
+    if (m_manga == TipoManga::corta)
+    {
+        precioBase *= 0.9f;
+    }
+
+    if (m_cuello == TipoCuello::mao)
+    {
+        precioBase *= 1.03f;
+    }
+    if (calidad == Calidad::Premium) {
+        precioBase *= 1.3; // se aumenta 30%
+    }
+
+    return precioBase;
 }

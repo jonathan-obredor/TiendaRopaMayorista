@@ -1,7 +1,6 @@
 #include "Prenda.h"
 
-Prenda::Prenda(const std::string& nombre, Calidad calidad, int cantidadEnStock)
-    : nombre(nombre), calidad(calidad), cantidadEnStock(cantidadEnStock) {}
+
 
 Calidad Prenda::getCalidad() const {
     return calidad;

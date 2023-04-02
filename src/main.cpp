@@ -7,6 +7,7 @@
 #include "Tienda.h"
 
 int main() {
+/*  
   // Crear un objeto Tienda
   Tienda tienda("Mi Tienda", "Calle Falsa 123");
 
@@ -34,6 +35,6 @@ int main() {
   for (Cotizacion cotizacion : vendedor.obtenerCotizaciones()) {
     std::cout << "Cotizacion #" << cotizacion.getId() << " - " << cotizacion.getFecha() << " " << cotizacion.getHora() << std::endl;
   }
-
+*/
   return 0;
 }
