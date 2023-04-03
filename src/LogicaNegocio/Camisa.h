@@ -18,8 +18,8 @@ enum class TipoManga
 class Camisa : public Prenda
 {
 public:
-    Camisa(const std::string &nombre, Calidad calidad = Calidad::Standard, int cantidadEnStock = 0, float precio = 0.0f)
-        : Prenda(nombre, calidad, cantidadEnStock, precio)
+    Camisa(const std::string &nombre, Calidad calidad = Calidad::Standard, int cantidadEnStock = 0, float precio = 0.0f, TipoCuello cuello = TipoCuello::comun, TipoManga manga = TipoManga::corta)
+        : Prenda(nombre, calidad, cantidadEnStock, precio), m_cuello(cuello), m_manga(manga)
     {
     }
 

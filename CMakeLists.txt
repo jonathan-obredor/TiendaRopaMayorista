@@ -40,3 +40,9 @@ target_link_libraries(${EXE_NAME} PRIVATE ${PROJECT_NAME})
 
 # Establecer el directorio de salida para la aplicación
 set_target_properties(${EXE_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
+
+# Habilitar el soporte de Clangd para el proyecto
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+# Establecer el archivo de compilación de comandos
+set(CMAKE_CXX_CLANG_TIDY "clang-tidy;-p=${CMAKE_BINARY_DIR}")

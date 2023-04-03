@@ -17,12 +17,22 @@ public:
     {
     }
     virtual ~Prenda() = default;
-
-    Calidad getCalidad() const;
-    void setCalidad(Calidad calidad);
-
-    int getUnidadesEnStock() const;
-    void setUnidadesEnStock(int unidadesEnStock);
+    Calidad getCalidad() const
+    {
+        return calidad;
+    }
+    void setCalidad(Calidad calidad)
+    {
+        this->calidad = calidad;
+    }
+    int getCantidadEnStock() const
+    {
+        return cantidadEnStock;
+    }
+    void setCantidadEnStock(int unidadesEnStock)
+    {
+        cantidadEnStock = unidadesEnStock;
+    }
 
     const float getPrecio() const
     {
@@ -36,7 +46,6 @@ protected:
 private:
     float precio;
     std::string nombre;
-
     int cantidadEnStock;
 };
 

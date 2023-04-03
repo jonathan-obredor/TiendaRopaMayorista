@@ -8,11 +8,15 @@
 class Tienda
 {
 public:
-    Tienda(const std::string &nombre, const std::string &direccion);
+    Tienda(const std::string &nombre, const std::string &direccion)
+        : nombre(nombre), direccion(direccion) {}
     virtual ~Tienda() = default;
 
     void agregarPrenda(const Prenda &prenda);
-    std::vector<Prenda> &obtenerPrendas();
+    std::vector<Prenda> &getPrendas()
+    {
+        return prendas;
+    }
 
     const std::string &getNombre() const
     {
