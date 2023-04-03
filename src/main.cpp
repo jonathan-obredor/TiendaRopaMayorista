@@ -15,7 +15,7 @@ int main()
 {
   Tienda tienda("Mi Tienda", "Calle Falsa 123");
   Vendedor vendedor("Juan", "Pérez", 1234);
-  TerminalUI ui;
+  TerminalUI myUI;
 
   tienda.agregarPrenda(Camisa("Camisa de cuello mao de calidad Standard manga corta", Calidad::Standard, 100, 0.0f, TipoCuello::mao, TipoManga::corta));
   tienda.agregarPrenda(Camisa("Camisa de cuello mao de calidad Premium manga corta", Calidad::Premium, 100, 0.0f, TipoCuello::mao, TipoManga::corta));
@@ -38,14 +38,14 @@ int main()
   int opcion = -1;
   while (static_cast<MenuOption>(opcion) != MenuOption::Salir)
   {
-    opcion = ui.mostrarPantallaPrincipal();
+    opcion = myUI.mostrarPantallaPrincipal();
     switch (static_cast<MenuOption>(opcion))
     {
     case MenuOption::HistorialCotizaciones:
-      ui.mostrarHistorialCotizaciones(vendedor);
+      myUI.mostrarHistorialCotizaciones(vendedor);
       break;
     case MenuOption::RealizarCotizacion:
-      ui.realizarCotizacion(vendedor, tienda);
+      myUI.realizarCotizacion(vendedor, tienda);
       break;
     case MenuOption::Salir:
       std::cout << "Salir.\n";
