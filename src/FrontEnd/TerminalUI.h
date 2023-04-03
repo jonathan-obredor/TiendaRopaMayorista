@@ -1,17 +1,22 @@
-#include <string>
-#include "Vendedor.h"
 #include "Tienda.h"
+#include "Vendedor.h"
+#include <string>
 
-class TerminalUI
-{
+enum class MenuOption {
+  HistorialCotizaciones = 1,
+  RealizarCotizacion = 2,
+  Salir = 3
+};
+class TerminalUI {
 public:
-    virtual ~TerminalUI() = default;
+  virtual ~TerminalUI() = default;
 
-    int mostrarPantallaPrincipal();
-    void mostrarHistorialCotizaciones(Vendedor &vendedor);
-    void realizarCotizacion(Vendedor &vendedor, Tienda &tienda);
+  int mostrarPantallaPrincipal();
+  void mostrarHistorialCotizaciones(Vendedor &vendedor);
+  void realizarCotizacion(Vendedor &vendedor, Tienda &tienda);
+  void runApp();
 
 private:
-    void nuevaPantalla();
-    void barra();
+  void nuevaPantalla();
+  void barra();
 };
