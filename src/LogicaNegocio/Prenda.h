@@ -34,7 +34,7 @@ public:
         cantidadEnStock = unidadesEnStock;
     }
 
-    const float getPrecio() const
+    const float& getPrecio() const
     {
         return precio;
     }
