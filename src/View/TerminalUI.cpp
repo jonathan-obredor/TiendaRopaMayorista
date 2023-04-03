@@ -3,7 +3,7 @@
 #include <iostream>
 #include <limits>
 
-int TerminalUI::mostrarPantallaPrincipal() {
+auto TerminalUI::mostrarPantallaPrincipal() {
   nuevaPantalla();
   int opcion = 0;
   std::cout << "-------------MENÚ PRINCIPAL------------------\n";
@@ -28,10 +28,10 @@ void TerminalUI::runApp() {
     opcion = mostrarPantallaPrincipal();
     switch (static_cast<MenuOption>(opcion)) {
     case MenuOption::HistorialCotizaciones:
-      mostrarHistorialCotizaciones(vendedor);
+      mostrarHistorialCotizaciones();
       break;
     case MenuOption::RealizarCotizacion:
-      realizarCotizacion(vendedor, tienda);
+      // realizarCotizacion(vendedor, tienda);
       break;
     case MenuOption::Salir:
       std::cout << "Salir.\n";
@@ -55,16 +55,15 @@ void TerminalUI::barra() {
   std::cout << "---------------------------------------------\n";
 }
 
-void TerminalUI::mostrarHistorialCotizaciones(Vendedor &vendedor) {
+void TerminalUI::mostrarHistorialCotizaciones() {
   nuevaPantalla();
-
-  auto cotizaciones = vendedor.obtenerCotizaciones();
+  std::cout << "Código del vendedor: " << presenter.getCodigoVendedor() << "\n";
+  auto cotizaciones = presenter.obtenerCotizaciones();
 
   if (cotizaciones.empty()) {
     std::cout << "No hay cotizaciones registradas.\n";
     // return;
   } else {
-    std::cout << "Código del vendedor: " << vendedor.getCodigo() << "\n";
     for (const auto &cotizacion : cotizaciones) {
       cotizacion->imprimir();
     }

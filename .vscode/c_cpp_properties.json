@@ -4,7 +4,7 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${workspaceFolder}/src/LogicaNegocio"
+                "${workspaceFolder}/src/Model"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",

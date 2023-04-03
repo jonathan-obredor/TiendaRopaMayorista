@@ -1,3 +1,4 @@
+#include "Presenter.h"
 #include "Tienda.h"
 #include "Vendedor.h"
 #include <string>
@@ -9,14 +10,18 @@ enum class MenuOption {
 };
 class TerminalUI {
 public:
+  explicit TerminalUI(Presenter &myPresenter) : presenter(myPresenter) {}
+
   virtual ~TerminalUI() = default;
 
-  int mostrarPantallaPrincipal();
-  void mostrarHistorialCotizaciones(Vendedor &vendedor);
+  auto mostrarPantallaPrincipal();
+  void mostrarHistorialCotizaciones();
   void realizarCotizacion(Vendedor &vendedor, Tienda &tienda);
   void runApp();
 
 private:
+  Presenter &presenter;
+
   void nuevaPantalla();
   void barra();
 };

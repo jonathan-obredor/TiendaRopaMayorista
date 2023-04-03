@@ -16,12 +16,12 @@ set(CMAKE_CXX_CLANG_TIDY
 
 # Archivos fuente del proyecto
 set(SRC_LIB
-    src/LogicaNegocio/Camisa.cpp
-    src/LogicaNegocio/Cotizacion.cpp
-    src/LogicaNegocio/Pantalon.cpp
-    src/LogicaNegocio/Prenda.cpp
-    src/LogicaNegocio/Tienda.cpp
-    src/LogicaNegocio/Vendedor.cpp
+    src/Model/Camisa.cpp
+    src/Model/Cotizacion.cpp
+    src/Model/Pantalon.cpp
+    src/Model/Prenda.cpp
+    src/Model/Tienda.cpp
+    src/Model/Vendedor.cpp
 )
 
 # Generar la biblioteca estática a partir de los archivos fuente
@@ -38,12 +38,13 @@ set(EXE_NAME MiTienda)
 
 set(SRC_EXE
     src/main.cpp
-    src/FrontEnd/TerminalUI.cpp
+    src/View/TerminalUI.cpp
+    src/Presenter/Presenter.cpp
 )
 
 add_executable(${EXE_NAME} ${SRC_EXE})
 
-target_include_directories(${EXE_NAME} PRIVATE src/LogicaNegocio src/FrontEnd src/Presenter)
+target_include_directories(${EXE_NAME} PRIVATE src/Model src/View src/Presenter)
 
 # Enlazar la aplicación con la biblioteca estática
 target_link_libraries(${EXE_NAME} PRIVATE ${PROJECT_NAME})
