@@ -1,2 +1,7 @@
 #include "Prenda.h"
-// nada para implementar
+
+void Prenda::descontarStock(int cantidad) {
+  if (cantidadEnStock >= cantidad) {
+    cantidadEnStock -= cantidad;
+  }
+}
