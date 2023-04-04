@@ -2,6 +2,7 @@
 #define TIENDA_H
 
 #include "Prenda.h"
+#include "Vendedor.h"
 #include <string>
 #include <vector>
 
@@ -11,16 +12,28 @@ public:
       : nombre(nombre), direccion(direccion) {}
   virtual ~Tienda() = default;
 
-  void agregarPrenda(const Prenda &prenda);
   void init();
   std::vector<Prenda> &getPrendas() { return prendas; }
   const std::string &getNombre() const { return nombre; }
   const std::string &getDireccion() const { return direccion; }
+  auto buscarPrenda(const std::string &nombre);
+  int getStockPrenda(const std::string &nombre);
+  int getCodigoVendedor() const;
+
+  void mostrarPrendas();
+
+  int nuevaCotizacion(const std::string &nombreBuscado, int cantidad,
+                      float precioUnitario);
+
+  const std::vector<Cotizacion> &obtenerCotizaciones() const;
 
 private:
+  void agregarPrenda(Prenda &&prenda);
+  void agregarVendedor(Vendedor &&ven);
   std::string nombre;
   std::string direccion;
   std::vector<Prenda> prendas;
+  std::vector<Vendedor> vendedores;
 };
 
 #endif // TIENDA_H

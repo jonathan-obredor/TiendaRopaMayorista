@@ -1,34 +1,43 @@
 #ifndef COTIZACION_H
 #define COTIZACION_H
 
-#include <memory>
 #include "Prenda.h"
+#include <memory>
 
-class Cotizacion
-{
+class Cotizacion {
 public:
-    Cotizacion(int id, const std::string &fecha, const std::string &hora, int codigoVendedor, std::shared_ptr<Prenda> prenda, int cantidad, float resultado)
-        : id_(id), fecha_(fecha), hora_(hora), codigoVendedor_(codigoVendedor), prenda_(prenda), cantidad_(cantidad), resultado_(resultado)
-    {
-    }
-    virtual ~Cotizacion() = default;
-    void imprimir();
-    const std::shared_ptr<Prenda> &obtenerPrenda() const { return prenda_; }
-    int getId() const { return id_; }
-    const std::string &getFecha() const { return fecha_; }
-    const std::string &getHora() const { return hora_; }
-    // const std::string &getDescripcionPrenda() const { return prenda_->getDescripcion(); } //TODO implementar en las 3 clases
-    int getCantidad() const { return cantidad_; }
-    auto getPrecioFinal() const;
+  Cotizacion(int id, const std::string &fecha, const std::string &hora,
+             std::string nombreP, int cantidad, float precioUnitario)
+      : idCotizacion(id), fecha_(fecha), hora_(hora), nombrePrenda(nombreP),
+        cantidad_(cantidad), precioUnitario(precioUnitario) {}
+
+  // Cotizacion(const Cotizacion &other) = default;
+
+  Cotizacion(Cotizacion &&other) noexcept
+      : idCotizacion(other.idCotizacion), fecha_(std::move(other.fecha_)),
+        hora_(std::move(other.hora_)),
+        nombrePrenda(std::move(other.nombrePrenda)), cantidad_(other.cantidad_),
+        precioUnitario(other.precioUnitario) {}
+
+  virtual ~Cotizacion() = default;
+
+  std::string imprimir() const;
+  int getId() const { return idCotizacion; }
+  const std::string &getFecha() const { return fecha_; }
+  const std::string &getHora() const { return hora_; }
+  int getCantidad() const { return cantidad_; }
+  auto getPrecioFinal() const;
 
 private:
-    int id_;
-    std::string fecha_;
-    std::string hora_;
-    int codigoVendedor_;
-    std::shared_ptr<Prenda> prenda_;
-    int cantidad_;
-    float resultado_;
+  int idCotizacion;
+  std::string fecha_;
+  std::string hora_;
+  // int codigoVendedor_; //todo no es necesario, un vendedor sabe cuantas
+  // cotizaciones tiene, no viceversa std::shared_ptr<Prenda> prenda_; //TODO no
+  // es necesario, solo se usa un contador
+  std::string nombrePrenda;
+  int cantidad_;
+  float precioUnitario;
 };
 
 #endif // COTIZACION_H
