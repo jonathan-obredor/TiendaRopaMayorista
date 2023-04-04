@@ -2,18 +2,25 @@
 #define PRESENTER_H
 
 #include "Tienda.h"
-#include "Vendedor.h"
 
 class Presenter {
 public:
-  Presenter(Tienda &tienda, Vendedor &vendedor)
-      : tienda(tienda), vendedor(vendedor) {}
-  auto obtenerCotizaciones() { return vendedor.obtenerCotizaciones(); }
-  auto getCodigoVendedor() const { return vendedor.getCodigo(); }
+  Presenter(Tienda &tienda) : tienda(tienda) {}
+
+  std::string obtenerCotizaciones() const;
+
+  // auto getCodigoVendedor() const { return vendedor.getCodigo(); }
+
+  int getStockPrenda(const std::string &nombre) const {
+    return tienda.getStockPrenda(nombre);
+  }
+
+  int nuevaCotizacion(const std::string &nombreBuscado, int cantidad,
+                      float precioUnitario);
+  int getCodigoVendedor() { return tienda.getCodigoVendedor(); }
 
 private:
   Tienda &tienda;
-  Vendedor &vendedor;
 };
 
 #endif

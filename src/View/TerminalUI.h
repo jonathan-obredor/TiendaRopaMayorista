@@ -10,18 +10,22 @@ enum class MenuOption {
 };
 class TerminalUI {
 public:
-  explicit TerminalUI(Presenter &myPresenter) : presenter(myPresenter) {}
+  explicit TerminalUI(Presenter &myPresenter) : presenter(myPresenter) {
+    nombreBuscado = "";
+  }
 
   virtual ~TerminalUI() = default;
 
-  auto mostrarPantallaPrincipal();
+  auto menuPrincipal();
   void mostrarHistorialCotizaciones();
-  void realizarCotizacion(Vendedor &vendedor, Tienda &tienda);
+  void realizarCotizacion();
   void runApp();
 
 private:
   Presenter &presenter;
-
+  std::string nombreBuscado;
+  void cuello();
   void nuevaPantalla();
   void barra();
+  void enterParaContinuar();
 };
