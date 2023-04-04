@@ -7,14 +7,9 @@
 
 int main() {
   Tienda tienda("Mi Tienda", "Calle Falsa 123");
-  Vendedor vendedor("Juan", "Pérez", 1234);
-
-  Presenter presenter(tienda, vendedor);
-  TerminalUI myUI(presenter);
-
-  myUI.runApp();
-
   tienda.init();
-
+  Presenter presenter(tienda);
+  TerminalUI myUI(presenter);
+  myUI.runApp();
   return 0;
 }
