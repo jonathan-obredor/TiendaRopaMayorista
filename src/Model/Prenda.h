@@ -1,22 +1,18 @@
 #ifndef PRENDA_H
 #define PRENDA_H
 
+#include "Imprimible.h"
 #include <string>
 
 enum class Calidad { Standard, Premium };
 
-class Prenda {
+class Prenda : public Imprimible {
 public:
   Prenda(const std::string &nombre, Calidad calidad = Calidad::Standard,
          int cantidadEnStock = 0, float precio = 0.0f)
       : nombre(nombre), calidad(calidad), cantidadEnStock(cantidadEnStock),
         precio(precio) {}
-/*
-  // Copy constructor
-  Prenda(const Prenda &other)
-      : nombre(other.nombre), calidad(other.calidad),
-        cantidadEnStock(other.cantidadEnStock), precio(other.precio) {}
-*/
+
   // Move constructor
   Prenda(Prenda &&other) noexcept
       : nombre(std::move(other.nombre)), calidad(other.calidad),
@@ -38,6 +34,9 @@ public:
 
   const float &getPrecio() const { return precio; }
   // void setPrecio(float precio);
+
+  std::string imprimir() const override;
+  std::string calidadToString(Calidad c) const;
 
 protected:
   Calidad calidad;

@@ -1,10 +1,11 @@
 #ifndef COTIZACION_H
 #define COTIZACION_H
 
+#include "Imprimible.h"
 #include "Prenda.h"
 #include <memory>
 
-class Cotizacion {
+class Cotizacion : public Imprimible {
 public:
   Cotizacion(int id, const std::string &fecha, const std::string &hora,
              std::string nombreP, int cantidad, float precioUnitario)
@@ -21,7 +22,7 @@ public:
 
   virtual ~Cotizacion() = default;
 
-  std::string imprimir() const;
+  std::string imprimir() const override;
   int getId() const { return idCotizacion; }
   const std::string &getFecha() const { return fecha_; }
   const std::string &getHora() const { return hora_; }
@@ -33,8 +34,8 @@ private:
   std::string fecha_;
   std::string hora_;
   // int codigoVendedor_; //todo no es necesario, un vendedor sabe cuantas
-  // cotizaciones tiene, no viceversa std::shared_ptr<Prenda> prenda_; //TODO no
-  // es necesario, solo se usa un contador
+  // cotizaciones tiene, no viceversa std::shared_ptr<Prenda> prenda_; //TODO
+  // no es necesario, solo se usa un contador
   std::string nombrePrenda;
   int cantidad_;
   float precioUnitario;

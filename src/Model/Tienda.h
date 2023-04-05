@@ -1,12 +1,13 @@
 #ifndef TIENDA_H
 #define TIENDA_H
 
+#include "Imprimible.h"
 #include "Prenda.h"
 #include "Vendedor.h"
 #include <string>
 #include <vector>
 
-class Tienda {
+class Tienda : public Imprimible {
 public:
   Tienda(const std::string &nombre, const std::string &direccion)
       : nombre(nombre), direccion(direccion) {}
@@ -26,6 +27,10 @@ public:
                       float precioUnitario);
 
   const std::vector<Cotizacion> &obtenerCotizaciones() const;
+
+  std::string imprimir() const override {
+    return "Tienda " + getNombre() + "\nDirección: " + getDireccion() + "\n";
+  }
 
 private:
   void agregarPrenda(Prenda &&prenda);
