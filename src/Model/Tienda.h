@@ -20,16 +20,17 @@ public:
   auto buscarPrenda(const std::string &nombre);
   int getStockPrenda(const std::string &nombre);
   int getCodigoVendedor() const;
+  Vendedor *getVendedorActivo() { return &(vendedores.front()); }
 
   void mostrarPrendas();
 
-  int nuevaCotizacion(const std::string &nombreBuscado, int cantidad,
-                      float precioUnitario);
+  const Cotizacion *nuevaCotizacion(const std::string &nombreBuscado,
+                                    int cantidad, float precioUnitario);
 
   const std::vector<Cotizacion> &obtenerCotizaciones() const;
 
   std::string imprimir() const override {
-    return "Tienda " + getNombre() + "\nDirección: " + getDireccion() + "\n";
+    return "Tienda " + getNombre() + "     Dirección: " + getDireccion();
   }
 
 private:

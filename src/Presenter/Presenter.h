@@ -15,9 +15,12 @@ public:
     return tienda.getStockPrenda(nombre);
   }
 
-  int nuevaCotizacion(const std::string &nombreBuscado, int cantidad,
-                      float precioUnitario);
+  std::string nuevaCotizacion(const std::string &nombreBuscado, int cantidad,
+                              float precioUnitario);
+
   int getCodigoVendedor() { return tienda.getCodigoVendedor(); }
+  auto imprimirTienda() { return tienda.imprimir(); }
+  auto imprimirVendedor(){return tienda.getVendedorActivo()->imprimir();}
 
 private:
   Tienda &tienda;

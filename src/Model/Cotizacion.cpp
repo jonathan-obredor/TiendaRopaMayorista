@@ -2,7 +2,7 @@
 #include <iostream>
 
 auto Cotizacion::getPrecioFinal() const {
-  return static_cast<float>(cantidad_) * precioUnitario;
+  return static_cast<float>(cantidad) * precioUnitario;
 }
 
 std::string Cotizacion::imprimir() const {

@@ -82,19 +82,20 @@ int Tienda::getStockPrenda(const std::string &nombre) {
   return 0;
 }
 
-int Tienda::nuevaCotizacion(const std::string &nombreBuscado, int cantidad,
-                            float precioUnitario) {
+const Cotizacion * Tienda::nuevaCotizacion(const std::string &nombreBuscado, int cantidad,
+                              float precioUnitario) {
   if (getStockPrenda(nombreBuscado) < cantidad) {
-    return -1;
+    return nullptr;
   }
 
   // TODO seleccionar al vendedor activo!
-  vendedores.front().nuevaCotizacion(nombreBuscado, cantidad, precioUnitario);
+  auto cot = vendedores.front().nuevaCotizacion(nombreBuscado, cantidad,
+                                                 precioUnitario);
 
   auto prenda = buscarPrenda(nombreBuscado);
   prenda->descontarStock(cantidad);
   // std::cout << "Cotización agregada exitosamente" << std::endl;
-  return 0;
+  return cot;
 }
 
 const std::vector<Cotizacion> &Tienda::obtenerCotizaciones() const {

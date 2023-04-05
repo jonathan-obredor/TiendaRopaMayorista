@@ -2,9 +2,14 @@
 #include "Tienda.h"
 #include <iostream>
 
-int Presenter::nuevaCotizacion(const std::string &nombreBuscado, int cantidad,
-                               float precioUnitario) {
-  return tienda.nuevaCotizacion(nombreBuscado, cantidad, precioUnitario);
+std::string Presenter::nuevaCotizacion(const std::string &nombreBuscado,
+                                        int cantidad, float precioUnitario) {
+  auto retVal = tienda.nuevaCotizacion(nombreBuscado, cantidad, precioUnitario);
+  if (retVal == nullptr) {
+    return "";
+  } else {
+    return std::move(retVal->imprimir());
+  }
 }
 
 std::string Presenter::obtenerCotizaciones() const {

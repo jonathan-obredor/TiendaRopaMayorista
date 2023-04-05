@@ -6,13 +6,14 @@
 auto TerminalUI::menuPrincipal() {
   nuevaPantalla();
   int opcion = 0;
-  std::cout << "-------------MENÚ PRINCIPAL------------------\n";
+  std::cout << "-------------------------------MENÚ "
+               "PRINCIPAL--------------------------------\n";
   barra();
-  // std::cout << tiendaNombre << " | " << tiendaDireccion << "\n";
+  std::cout << "----------------" << presenter.imprimirTienda() << "--------------\n";
   barra();
-  // std::cout << vendedorNombre << " | " << vendedorCodigo << "\n";
+  std::cout << "--------------------"<< presenter.imprimirVendedor()<< "-----------------------" << "\n";
   barra();
-  std::cout << "SELECCIONE UNA OPCIÓN DEL MENÚ:\n";
+  std::cout << "SELECCIONE UNA OPCIÓN DEL MENU:\n";
   std::cout << "1) Historial de Cotizaciones\n";
   std::cout << "2) Realizar Cotización\n";
   std::cout << "3) Salir\n";
@@ -44,15 +45,18 @@ void TerminalUI::runApp() {
 }
 
 void TerminalUI::nuevaPantalla() {
-  // system("clear");
-  std::cout << "-----------COTIZADOR EXPRESS-----------------\n";
+  system("clear");
+  std::cout << "-----------------------------COTIZADOR "
+               "EXPRESS-------------------------------\n";
   barra();
-  std::cout << "---------Presiona 3 para salir---------------\n";
+  std::cout << "--------------------------Presiona 3 para "
+               "salir------------------------------\n";
   barra();
 }
 
 void TerminalUI::barra() {
-  std::cout << "---------------------------------------------\n";
+  std::cout << "---------------------------------------------------------------"
+               "--------------\n";
 }
 
 void TerminalUI::mostrarHistorialCotizaciones() {
@@ -184,22 +188,20 @@ void TerminalUI::realizarCotizacion() {
   std::cout << "PASO 5: Ingrese la cantidad de unidades a cotizar: ";
   std::cin >> cantidad;
 
-  if (presenter.nuevaCotizacion(nombreBuscado, cantidad, precioUnitario) ==
-      -1) {
+  auto cot = presenter.nuevaCotizacion(nombreBuscado, cantidad, precioUnitario);
+  if (cot == "") {
     barra();
     std::cout << "Error: Esta intentando cotizar un numero mayor al stock "
                  "disponible. Abortando.\n";
     enterParaContinuar();
-  }
-
-  if (stock < cantidad) {
-
     return;
   }
 
   // mostrar el resultado de la nueva cotizacion
   nuevaPantalla();
-  // cotizacion->imprimir();
+  std::cout << "La cotizacion queda:\n";
+  std::cout << cot;
+  enterParaContinuar();
 }
 
 void TerminalUI::enterParaContinuar() {

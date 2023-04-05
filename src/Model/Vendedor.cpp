@@ -1,11 +1,13 @@
 #include "Vendedor.h"
+#include "Cotizacion.h"
 #include <ctime>
 #include <iomanip>
 #include <iostream>
 #include <sstream>
 
-void Vendedor::nuevaCotizacion(const std::string &nombre, int cantidad,
-                               float precioUnitario) {
+const Cotizacion *Vendedor::nuevaCotizacion(const std::string &nombre,
+                                            int cantidad,
+                                            float precioUnitario) {
   // Obtenemos el tiempo actual
   std::time_t t = std::time(nullptr);
 
@@ -32,7 +34,9 @@ void Vendedor::nuevaCotizacion(const std::string &nombre, int cantidad,
   // Convertimos el stringstream en una std::string
   std::string fechaActual = fecha_stream.str();
 
-  cotizaciones_.emplace_back(
-      std::move(Cotizacion(cotizaciones_.size(), horaActual, fechaActual,
+  cotizaciones.emplace_back(
+      std::move(Cotizacion(cotizaciones.size(), horaActual, fechaActual,
                            nombre, cantidad, precioUnitario)));
+  Cotizacion * cot = &(cotizaciones.back());
+  return cot;
 }
